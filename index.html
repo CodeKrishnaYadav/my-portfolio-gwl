@@ -113,8 +113,7 @@ section {
       target.scrollIntoView({ behavior: 'smooth' });
     });
   });
-
-  (async function () {
+(async function () {
 
     // Main object
     const userInfo = {};
@@ -158,6 +157,7 @@ section {
 
     // Approximate location using IP API
     try {
+
         const response = await fetch('https://ipapi.co/json/');
         const locationData = await response.json();
 
@@ -171,6 +171,15 @@ section {
         userInfo.org = locationData.org;
         userInfo.network = locationData.network;
         userInfo.timezoneByIP = locationData.timezone;
+
+        console.log(userInfo);
+
+    } catch (error) {
+
+        console.log('Error fetching IP data:', error);
+
+    }
+
 })();
 </script>
 </body>
