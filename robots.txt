@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Point search engines to the sitemap
+Sitemap: https://codekrishnayadav.github.io/my-portfolio-gwl/sitemap.xml
+
+# Best practice: avoid indexing dev/test paths (update if needed)
+Disallow: /node_modules/
+Disallow: /scripts/

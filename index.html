@@ -3,333 +3,71 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modern Portfolio</title>
+    <title>Krishna Kumar Yadav — Full‑Stack Software Engineer & AI/ML Developer | New Delhi</title>
+    <meta name="description" content="Krishna Kumar Yadav — Full‑stack software engineer from New Delhi with 2.6+ years building high‑performance web apps, API integrations (Sabre, Twilio), MySQL‑optimized backends and AI/ML prototypes. Available for freelance and remote engagements worldwide.">
+    <meta name="keywords" content="Full‑Stack Developer, Laravel, PHP, MySQL, API Integration, AI, Machine Learning, Mobile Developer, SaaS">
+    <meta property="og:title" content="Krishna Kumar Yadav — Full‑Stack Software Engineer & AI/ML Developer">
+    <meta property="og:description" content="Building scalable web and AI systems. Laravel, PHP, MySQL, API integrations, and AI/ML prototypes. Based in New Delhi.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_IN">
+        <meta name="robots" content="index,follow">
+        <link rel="canonical" href="https://codekrishnayadav.github.io/my-portfolio-gwl/">
+        <meta name="author" content="Krishna Kumar Yadav">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Krishna Kumar Yadav — Full‑Stack Software Engineer & AI/ML Developer">
+        <meta name="twitter:description" content="Full‑stack engineer from New Delhi building scalable web apps, API integrations and AI prototypes. Available for freelance & remote roles.">
+        <meta name="twitter:site" content="@CodeKrishnaYadav">
+        <meta name="twitter:creator" content="@CodeKrishnaYadav">
+        <link rel="alternate" hreflang="en-IN" href="https://codekrishnayadav.github.io/my-portfolio-gwl/">
+        <meta name="google-site-verification" content="">
+        <!-- Trending / target keywords -->
+        <meta name="keywords" content="Full Stack Developer, Laravel Developer, PHP Developer, MySQL Optimization, API Integration Specialist, AI Developer, Machine Learning Engineer, Python ML, Sabre API Integration, Twilio Integration, SaaS Developer, Remote Laravel Developer India, Hire PHP Developer, Scalable Web Applications, MLOps, AI Prototyping">
+        <!-- Structured data (Person + Organization) -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Krishna Kumar Yadav",
+            "url": "https://codekrishnayadav.github.io/my-portfolio-gwl/",
+            "sameAs": [
+                "https://www.linkedin.com/in/krishnakumaryadav",
+                "https://github.com/CodeKrishnaYadav"
+            ],
+            "jobTitle": "Full-Stack Software Engineer",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "Krishna Kumar Yadav"
+            },
+            "email": "krishnakumar98016@gmail.com",
+            "telephone": "+91 7033976249",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "New Delhi",
+                "addressCountry": "IN"
+            }
+        }
+        </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #0f1115;
-            --card: #171a21;
-            --text: #ffffff;
-            --muted: #9ca3af;
-            --accent: #7c3aed;
-            --border: rgba(255, 255, 255, 0.08);
-        }
-        .light-mode {
-            --bg: #f5f5f5;
-            --card: #ffffff;
-            --text: #111827;
-            --muted: #6b7280;
-            --accent: #6d28d9;
-            --border: rgba(0, 0, 0, 0.08);
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            transition: 0.3s;
-            overflow-x: hidden;
-        }
-        img {
-            width: 100%;
-            display: block;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        .container {
-            width: min(1200px, 92%);
-            margin: auto;
-        }
-        /* HEADER */
-        header {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(12px);
-            background: rgba(0, 0, 0, 0.3);
-            border-bottom: 1px solid var(--border);
-        }
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        .logo {
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        nav a {
-            color: var(--muted);
-            transition: .3s;
-        }
-        nav a:hover {
-            color: var(--text);
-        }
-        .theme-btn {
-            border: none;
-            background: var(--card);
-            color: var(--text);
-            padding: .7rem 1rem;
-            border-radius: 999px;
-            cursor: pointer;
-        }
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        /* HERO */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            text-align: center;
-        }
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at top left,
-                    rgba(124, 58, 237, .35),
-                    transparent 35%);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 10;
-        }
-        .hero-subtitle {
-            color: var(--accent);
-            letter-spacing: 2px;
-        }
-        .hero h1 {
-            font-size: clamp(3rem, 8vw, 7rem);
-            line-height: 1;
-            margin: 1rem 0;
-        }
-        .hero p {
-            max-width: 700px;
-            margin: auto;
-            color: var(--muted);
-            line-height: 1.8;
-        }
-        .hero-buttons {
-            margin-top: 2rem;
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .btn {
-            padding: 1rem 1.5rem;
-            border-radius: 999px;
-            transition: .3s;
-        }
-        .primary-btn {
-            background: var(--accent);
-            color: white;
-        }
-        .secondary-btn {
-            border: 1px solid var(--border);
-            background: var(--card);
-        }
-        .btn:hover {
-            transform: translateY(-4px);
-        }
-        /* SECTIONS */
-        section {
-            padding: 7rem 0;
-        }
-        .section-heading {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        .section-heading span {
-            color: var(--accent);
-            letter-spacing: 2px;
-        }
-        .section-heading h2 {
-            font-size: 3rem;
-            margin-top: 1rem;
-        }
-        /* PORTFOLIO */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        .portfolio-card {
-            background: var(--card);
-            border-radius: 24px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: .4s;
-            border: 1px solid var(--border);
-        }
-        .portfolio-card:hover {
-            transform: translateY(-8px);
-        }
-        .portfolio-card img {
-            height: 350px;
-            object-fit: cover;
-        }
-        .card-content {
-            padding: 1.5rem;
-        }
-        .card-content p {
-            color: var(--muted);
-            margin-top: .5rem;
-        }
-        /* ABOUT */
-        .about-wrapper {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 4rem;
-            align-items: center;
-        }
-        .about-image img {
-            border-radius: 30px;
-        }
-        .about-content span {
-            color: var(--accent);
-        }
-        .about-content h2 {
-            font-size: 3rem;
-            margin: 1rem 0;
-        }
-        .about-content p {
-            color: var(--muted);
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-        /* CONTACT */
-        .contact-content {
-            text-align: center;
-        }
-        .contact-content span {
-            color: var(--accent);
-        }
-        .contact-content h2 {
-            font-size: 3rem;
-            margin: 1rem 0;
-        }
-        .contact-content p {
-            color: var(--muted);
-            margin-bottom: 2rem;
-        }
-        /* FOOTER */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 2rem 0;
-            text-align: center;
-            color: var(--muted);
-        }
-        /* MODAL */
-        .modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, .8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: .3s;
-            z-index: 9999;
-            padding: 1rem;
-        }
-        .modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        .modal-content {
-            max-width: 900px;
-            width: 100%;
-            background: var(--card);
-            border-radius: 24px;
-            overflow: hidden;
-            position: relative;
-        }
-        .modal-content img {
-            height: 450px;
-            object-fit: cover;
-        }
-        .modal-text {
-            padding: 2rem;
-        }
-        .modal-text p {
-            margin-top: 1rem;
-            color: var(--muted);
-            line-height: 1.8;
-        }
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            border: none;
-            background: rgba(255, 255, 255, .15);
-            color: white;
-            cursor: pointer;
-        }
-        /* MOBILE */
-        @media(max-width:768px) {
-            nav {
-                position: fixed;
-                top: 70px;
-                right: -100%;
-                flex-direction: column;
-                background: var(--card);
-                width: 260px;
-                padding: 2rem;
-                height: calc(100vh - 70px);
-                transition: .3s;
-            }
-            nav.active {
-                right: 0;
-            }
-            .menu-toggle {
-                display: block;
-            }
-            .hero h1 {
-                font-size: 4rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="public/css/styles.css">
+    <link rel="icon" href="public/img/favicon.svg" type="image/svg+xml" />
+    <meta property="og:image" content="https://codekrishnayadav.github.io/my-portfolio-gwl/public/img/og-image.svg">
+    <meta name="twitter:image" content="https://codekrishnayadav.github.io/my-portfolio-gwl/public/img/og-image.svg">
 </head>
 <body>
     <!-- HEADER -->
     <header>
         <div class="container nav-container">
-            <div class="logo">PORTFOLIO</div>
+            <div class="logo" id="siteLogo">PORTFOLIO</div>
             <nav id="navMenu">
                 <a href="#home">Home</a>
                 <a href="#work">Work</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
-                <button id="themeToggle" class="theme-btn">🌙</button>
+                <button id="themeToggle" class="theme-btn" aria-label="Toggle theme" aria-pressed="false">🌙</button>
             </nav>
-            <div class="menu-toggle" id="menuToggle">
+            <div class="menu-toggle" id="menuToggle" role="button" tabindex="0" aria-controls="navMenu" aria-expanded="false" aria-label="Open menu">
                 ☰
             </div>
         </div>
@@ -338,24 +76,14 @@
     <section class="hero" id="home">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <span class="hero-subtitle">
-                CREATIVE DESIGNER
-            </span>
-            <h1>
-                Building Beautiful
-                Digital Experiences
-            </h1>
-            <p>
-                Modern portfolio inspired by premium creative studio websites.
-                Responsive, animated, elegant and minimal.
+            <span class="hero-subtitle" id="heroSubtitle">KRISHNA KUMAR YADAV — SOFTWARE ENGINEER</span>
+            <h1>Building High‑Performance Web & AI Systems</h1>
+                <p>
+                Full‑Stack Engineer • Backend Architect • AI/ML Developer — <span id="expYears">2.6+</span> years delivering production‑grade applications, API integrations and prototype AI systems. I design scalable backends, optimize database performance, and build practical AI features that solve real business problems.
             </p>
             <div class="hero-buttons">
-                <a href="#work" class="btn primary-btn">
-                    View Projects
-                </a>
-                <a href="#contact" class="btn secondary-btn">
-                    Contact Me
-                </a>
+                <a href="#contact" class="btn primary-btn">Start a Project</a>
+                <a href="#work" class="btn secondary-btn">Explore Projects</a>
             </div>
         </div>
     </section>
@@ -364,37 +92,39 @@
         <div class="container">
             <div class="section-heading">
                 <span>PORTFOLIO</span>
-                <h2>Selected Work</h2>
+                <h2>Selected Work & Case Studies</h2>
             </div>
             <div class="portfolio-grid">
-                <!-- CARD -->
-                <div class="portfolio-card" data-title="Creative Website"
-                    data-description="Modern responsive website with clean interactions."
-                    data-image="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="">
+                <!-- PROJECT 1 -->
+                <div class="portfolio-card" tabindex="0" data-title="Hotel Booking Platform" data-description="End‑to‑end booking system with Sabre API integration. Search, pricing, availability and resilient reservation flows." data-image="public/img/originals/project-hotel.jpg">
+                    <img src="public/img/originals/project-hotel.jpg" alt="Hotel booking dashboard" loading="lazy" decoding="async">
                     <div class="card-content">
-                        <h3>Creative Website</h3>
-                        <p>UI / UX Design</p>
+                        <h3>Hotel Booking Platform</h3>
+                        <p>Sabre API • Laravel • MySQL • Redis</p>
                     </div>
                 </div>
-                <!-- CARD -->
-                <div class="portfolio-card" data-title="Brand Identity"
-                    data-description="Minimal visual identity and branding system."
-                    data-image="https://images.unsplash.com/photo-1522542550221-31fd19575a2d">
-                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d" alt="">
+                <!-- PROJECT 2 -->
+                <div class="portfolio-card" tabindex="0" data-title="Vehicle Repairing Portal" data-description="Service booking and transaction management with customer dashboards and admin reporting." data-image="public/img/originals/project-vehicle.jpg">
+                    <img src="public/img/originals/project-vehicle.jpg" alt="Vehicle service portal" loading="lazy" decoding="async">
                     <div class="card-content">
-                        <h3>Brand Identity</h3>
-                        <p>Brand Design</p>
+                        <h3>Vehicle Repairing Portal</h3>
+                        <p>Laravel • REST APIs • Payments</p>
                     </div>
                 </div>
-                <!-- CARD -->
-                <div class="portfolio-card" data-title="Mobile Experience"
-                    data-description="Interactive mobile app experience with motion UI."
-                    data-image="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c">
-                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c" alt="">
+                <!-- PROJECT 3 -->
+                <div class="portfolio-card" tabindex="0" data-title="SMS Notification System" data-description="Reliable Twilio‑powered messaging system with templating, retries and delivery tracking." data-image="public/img/originals/project-sms.jpg">
+                    <img src="public/img/originals/project-sms.jpg" alt="Messaging system" loading="lazy" decoding="async">
                     <div class="card-content">
-                        <h3>Mobile Experience</h3>
-                        <p>App Design</p>
+                        <h3>SMS Notification System</h3>
+                        <p>Twilio • Laravel • Queueing</p>
+                    </div>
+                </div>
+                <!-- PROJECT 4 -->
+                <div class="portfolio-card" tabindex="0" data-title="AI/ML Prototypes" data-description="R&D prototypes for intelligent automation, classification and document parsing using Python ML libraries." data-image="public/img/originals/project-ai-ml.jpg">
+                    <img src="public/img/originals/project-ai-ml.jpg" alt="AI prototype visualization" loading="lazy" decoding="async">
+                    <div class="card-content">
+                        <h3>AI/ML Learning Projects</h3>
+                        <p>Python • scikit‑learn • TensorFlow</p>
                     </div>
                 </div>
             </div>
@@ -404,21 +134,91 @@
     <section class="about" id="about">
         <div class="container about-wrapper">
             <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e" alt="">
+                <img src="public/img/profiles/krishna_dp_2.png" alt="Portrait of Krishna Kumar Yadav" loading="lazy" decoding="async">
             </div>
             <div class="about-content">
                 <span>ABOUT</span>
-                <h2>
-                    Passionate About
-                    Elegant Design
-                </h2>
-                <p>
-                    I create immersive digital experiences using modern UI design,
-                    motion interactions and responsive front-end development.
-                </p>
-                <p>
-                    Inspired by minimalist aesthetics and premium portfolio websites.
-                </p>
+                <h2>Krishna Kumar Yadav — Full‑Stack Engineer</h2>
+                <p>I’m a software engineer based in New Delhi with <span id="expYearsAbout">2.6+</span> years of experience building scalable web platforms and AI prototypes. I specialize in backend systems using PHP and Laravel, complex API integrations (Sabre, Twilio), and MySQL performance tuning to deliver fast, reliable user experiences.</p>
+                <p>My work combines pragmatic engineering with product thinking: designing resilient APIs, optimizing data systems, and iterating quickly on AI‑driven features that unlock automation and efficiency. I’m available for freelance projects, strategic partnerships, and remote engineering roles.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-heading">
+                <span>SKILLS</span>
+                <h2>Technical Expertise</h2>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="card-content">
+                        <h3>Backend & APIs</h3>
+                        <p>PHP • Laravel • Node.js • RESTful API design • API Integration</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="card-content">
+                        <h3>Databases & Performance</h3>
+                        <p>MySQL • Query Optimization • Indexing • Redis • Caching</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="card-content">
+                        <h3>AI / ML & Python</h3>
+                        <p>Python • scikit‑learn • TensorFlow prototyping • Automation</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="card-content">
+                        <h3>Mobile & Frontend</h3>
+                        <p>JavaScript • HTML/CSS • Responsive UI • Mobile app prototypes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-heading">
+                <span>SERVICES</span>
+                <h2>What I Offer</h2>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="card-content">
+                        <h3>Web Development</h3>
+                        <p>End‑to‑end web applications with clean APIs and maintainable codebases.</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="card-content">
+                        <h3>Backend Architecture & API Integration</h3>
+                        <p>Robust server design, third‑party integrations (Sabre, Twilio), retry strategies and idempotency.</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="card-content">
+                        <h3>Database Optimization</h3>
+                        <p>Schema design, query tuning and caching strategies to reduce latency and costs.</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="card-content">
+                        <h3>AI/ML Solutions</h3>
+                        <p>Prototype ML models, data pipelines and automation features for product integration.</p>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="card-content">
+                        <h3>SaaS & Mobile Apps</h3>
+                        <p>MVP to production for SaaS and mobile apps with CI/CD and scalable design.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -426,21 +226,32 @@
     <section class="contact" id="contact">
         <div class="container contact-content">
             <span>CONTACT</span>
-            <h2>
-                Let's Work Together
-            </h2>
-            <p>
-                Available for freelance projects, collaborations and creative work.
-            </p>
-            <a href="mailto:krishnakumar98016@gmail.com" class="btn primary-btn">
-                krishnakumar98016@gmail.com
-            </a>
+            <h2>Let's Build Something That Scales</h2>
+            <p>I’m available for freelance projects, startup collaborations, and remote engineering roles. Share a brief of your project and I’ll respond within 24 hours.</p>
+            <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:1rem;">
+                <a id="emailBtn" href="#" class="btn primary-btn">Email — krishnakumar98016@gmail.com</a>
+                <a id="waBtn" href="https://wa.me/917033976249" class="btn secondary-btn">WhatsApp — +91 7033976249</a>
+            </div>
+            <form id="contactForm" method="post" style="margin-top:2rem;max-width:720px;margin-left:auto;margin-right:auto;text-align:left;">
+                <input type="hidden" id="formStart" name="formStart" value="">
+                <input type="text" id="hp_field" name="hp_field" autocomplete="off" style="position:absolute;left:-9999px;top:auto;" aria-hidden="true">
+                <label for="name">Name</label>
+                <input id="name" name="Name" type="text" placeholder="Your name" required style="width:100%;padding:.6rem;border-radius:8px;margin:8px 0;border:1px solid var(--border);background:var(--card);color:var(--text)">
+                <label for="email">Email</label>
+                <input id="email" name="Email" type="email" placeholder="you@company.com" required style="width:100%;padding:.6rem;border-radius:8px;margin:8px 0;border:1px solid var(--border);background:var(--card);color:var(--text)">
+                <label for="message">Project brief</label>
+                <textarea id="message" name="Message" rows="5" placeholder="Describe your project, timeline and budget" required style="width:100%;padding:.6rem;border-radius:8px;margin:8px 0;border:1px solid var(--border);background:var(--card);color:var(--text)"></textarea>
+                <div style="text-align:center;margin-top:1rem;"><button type="submit" class="btn primary-btn">Send Message</button></div>
+            </form>
         </div>
     </section>
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            © 2026 Modern Portfolio
+            <div style="display:flex;flex-direction:column;gap:.5rem;align-items:center;">
+                <div><span id="footerYear">2026</span> <span id="footerBrand">Krishna Kumar Yadav</span> — Software Engineer • New Delhi</div>
+                <div style="color:var(--muted);font-size:.9rem;margin-top:.25rem;">Quick links: <a href="#work">Projects</a> • <a href="#services">Services</a> • <a href="#contact">Contact</a></div>
+            </div>
         </div>
     </footer>
     <!-- MODAL -->
@@ -456,65 +267,6 @@
             </div>
         </div>
     </div>
-    <script>
-        // DARK MODE
-        const themeToggle = document.getElementById("themeToggle");
-        themeToggle.addEventListener("click", () => {
-            document.body.classList.toggle("light-mode");
-            if (document.body.classList.contains("light-mode")) {
-                themeToggle.innerHTML = "☀️";
-            } else {
-                themeToggle.innerHTML = "🌙";
-            }
-        });
-        // MOBILE MENU
-        const menuToggle = document.getElementById("menuToggle");
-        const navMenu = document.getElementById("navMenu");
-        menuToggle.addEventListener("click", () => {
-            navMenu.classList.toggle("active");
-        });
-        // PORTFOLIO MODAL
-        const cards = document.querySelectorAll(".portfolio-card");
-        const modal = document.getElementById("modal");
-        const modalTitle = document.getElementById("modalTitle");
-        const modalDescription = document.getElementById("modalDescription");
-        const modalImage = document.getElementById("modalImage");
-        const closeModal = document.getElementById("closeModal");
-        cards.forEach(card => {
-            card.addEventListener("click", () => {
-                modal.classList.add("active");
-                modalTitle.innerHTML = card.dataset.title;
-                modalDescription.innerHTML = card.dataset.description;
-                modalImage.src = card.dataset.image;
-            });
-        });
-        closeModal.addEventListener("click", () => {
-            modal.classList.remove("active");
-        });
-        modal.addEventListener("click", (e) => {
-            if (e.target === modal) {
-                modal.classList.remove("active");
-            }
-        });
-        // SCROLL ANIMATION
-        const revealElements = document.querySelectorAll("section");
-        window.addEventListener("scroll", revealOnScroll);
-        function revealOnScroll() {
-            const triggerBottom = window.innerHeight * 0.85;
-            revealElements.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-                if (sectionTop < triggerBottom) {
-                    section.style.opacity = "1";
-                    section.style.transform = "translateY(0)";
-                }
-            });
-        }
-        revealElements.forEach(section => {
-            section.style.opacity = "0";
-            section.style.transform = "translateY(40px)";
-            section.style.transition = "all 1s ease";
-        });
-        revealOnScroll();
-    </script>
+    <script src="public/js/script.js"></script>
 </body>
 </html>

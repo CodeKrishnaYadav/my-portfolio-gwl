@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0%" stop-color="#6d28d9"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <style>
+      .bg{fill:url(#g)}
+      .name{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; fill:#fff; font-weight:700; font-size:56px}
+      .role{font-family:Inter, sans-serif; fill:rgba(255,255,255,0.9); font-size:28px}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="630" rx="20"/>
+  <g transform="translate(80,220)">
+    <text class="name">Krishna Kumar Yadav</text>
+    <text class="role" y="64">Full‑Stack Engineer • AI/ML Developer</text>
+  </g>
+</svg>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1024" height="1024" fill="black"/>
+
+  <defs>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff6a00"/>
+      <stop offset="100%" stop-color="#ff3c1f"/>
+    </linearGradient>
+
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#43b0ff"/>
+      <stop offset="100%" stop-color="#1f7fff"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Top orange shape -->
+  <polygon
+    points="450,450 550,350 680,350 530,500 450,580"
+    fill="url(#orangeGrad)"
+  />
+
+  <!-- Bottom blue shape -->
+  <polygon
+    points="530,500 580,550 720,700 580,700 450,580"
+    fill="url(#blueGrad)"
+  />
+</svg>
