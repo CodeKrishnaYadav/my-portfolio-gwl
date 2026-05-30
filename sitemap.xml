@@ -13,6 +13,12 @@
     <priority>0.80</priority>
   </url>
   <url>
+    <loc>https://codekrishnayadav.github.io/my-portfolio-gwl/?lang=mai</loc>
+    <lastmod>2026-05-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+  <url>
     <loc>https://codekrishnayadav.github.io/my-portfolio-gwl/#about</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>

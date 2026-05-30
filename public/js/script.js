@@ -44,7 +44,7 @@ const SITE_CONFIG = {
     name: 'Krishna Kumar Yadav',
     email: 'krishnakumar98016@gmail.com',
     phone: '+917033976249',
-    experienceStart: '2023-08-04' // ISO date: YYYY-MM-DD
+    experienceStart: '2023-08-04'
 };
 
 function computeExperienceYears(startIso) {
@@ -132,6 +132,141 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailBtn = document.getElementById('emailBtn');
     const waBtn = document.getElementById('waBtn');
 
+        /* i18n: loadable locales (fallback) and runtime language switcher */
+        const SITE_LOCALES = {
+            en: null, // prefer fetching JSON; fallback to hardcoded below if fetch fails
+            mai: null
+        };
+
+        function getSavedLang() {
+            const saved = localStorage.getItem('site_lang');
+            if (saved) return saved;
+            const nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+            if (nav.startsWith('mai') || nav.startsWith('mi')) return 'mai';
+            return 'en';
+        }
+
+        async function loadLocale(lang) {
+            // Try fetch first (allows editing JSON files), otherwise use embedded SITE_LOCALES
+            try {
+                const resp = await fetch('public/locales/' + lang + '.json', {cache: 'no-cache'});
+                if (resp.ok) {
+                    const data = await resp.json();
+                    return data;
+                }
+            } catch (e) {
+                console.warn('Locale fetch failed for', lang, e);
+            }
+            // Fallbacks (minimal)
+            if (lang === 'mai') return {
+                langName: 'मैथिली',
+                title: 'कृष्ण कुमार यादव — फुल‑स्टैक इंजीनियर',
+                metaDescription: 'कृष्ण कुमार यादव — न्यू दिल्ली के फुल‑स्टैक इंजीनियर।',
+                heroSubtitle: 'कृष्ण कुमार यादव — सफ्टवेयर इंजीनियर',
+                heroTitle: 'उच्च‑प्रदर्शन वेब आ AI सिस्टम बनबैत',
+                heroDesc: 'फुल‑स्टैक इंजीनियर • बैकएंड आर्किटेक्ट • AI/ML डेवलपर — <span id="expYears">2.6+</span> वर्षक अनुभव।',
+                portfolioLabel: 'पोर्टफोलियो',
+                portfolioHeading: 'चयनित परियोजना आ केस स्टडी',
+                aboutLabel: 'बारे में',
+                aboutHeading: 'कृष्ण कुमार यादव — फुल‑स्टैक इंजीनियर',
+                skillsLabel: 'कौशल',
+                skillsHeading: 'प्राविधिक दक्षता',
+                servicesLabel: 'सेवाएँ',
+                servicesHeading: 'हम की‑की देब',
+                contactLabel: 'संपर्क',
+                contactHeading: 'किछु बनाउ जे स्केल करय',
+                contactParagraph: 'हम फ्रीलांस प्रोजेक्ट, स्टार्टअप सहयोग आ रिमोट भूमिका खातिर उपलब्ध छी।',
+                emailBtn: 'ईमेल — ' + SITE_CONFIG.email,
+                waBtn: 'व्हाट्सऐप — ' + SITE_CONFIG.phone,
+                footerBrand: SITE_CONFIG.name
+            };
+            // default English fallback
+            return {
+                langName: 'English',
+                title: SITE_CONFIG.name + ' — Full‑Stack Software Engineer & AI/ML Developer | New Delhi',
+                metaDescription: SITE_CONFIG.name + ' — Full‑stack software engineer from New Delhi with experience building high‑performance web apps, API integrations and AI/ML prototypes.',
+                heroSubtitle: SITE_CONFIG.name + ' — SOFTWARE ENGINEER',
+                heroTitle: 'Building High‑Performance Web & AI Systems',
+                heroDesc: 'Full‑Stack Engineer • Backend Architect • AI/ML Developer — <span id="expYears">2.6+</span> years delivering production‑grade applications, API integrations and prototype AI systems.',
+                portfolioLabel: 'PORTFOLIO',
+                portfolioHeading: 'Selected Work & Case Studies',
+                aboutLabel: 'ABOUT',
+                aboutHeading: SITE_CONFIG.name + ' — Full‑Stack Engineer',
+                skillsLabel: 'SKILLS',
+                skillsHeading: 'Technical Expertise',
+                servicesLabel: 'SERVICES',
+                servicesHeading: 'What I Offer',
+                contactLabel: 'CONTACT',
+                contactHeading: "Let's Build Something That Scales",
+                contactParagraph: 'I’m available for freelance projects, startup collaborations, and remote engineering roles. Share a brief of your project and I’ll respond within 24 hours.',
+                emailBtn: 'Email — ' + SITE_CONFIG.email,
+                waBtn: 'WhatsApp — ' + SITE_CONFIG.phone,
+                footerBrand: SITE_CONFIG.name
+            };
+        }
+
+        function applyTranslations(locale) {
+            try {
+                // document title & meta
+                if (locale.title) document.title = locale.title;
+                const metaDesc = document.querySelector('meta[name="description"]');
+                if (metaDesc && locale.metaDescription) metaDesc.setAttribute('content', locale.metaDescription);
+                const ogDesc = document.querySelector('meta[property="og:description"]');
+                if (ogDesc && locale.metaDescription) ogDesc.setAttribute('content', locale.metaDescription);
+                const twDesc = document.querySelector('meta[name="twitter:description"]');
+                if (twDesc && locale.metaDescription) twDesc.setAttribute('content', locale.metaDescription);
+
+                // set html lang
+                document.documentElement.lang = locale.langCode || document.documentElement.lang || 'en';
+
+                // data-i18n attributes
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (locale[key]) el.textContent = locale[key];
+                });
+
+                // specific ids (may contain HTML)
+                const heroSub = document.getElementById('heroSubtitle');
+                const heroTitle = document.getElementById('heroTitle');
+                const heroDesc = document.getElementById('heroDesc');
+                if (heroSub && locale.heroSubtitle) heroSub.textContent = locale.heroSubtitle;
+                if (heroTitle && locale.heroTitle) heroTitle.textContent = locale.heroTitle;
+                if (heroDesc && locale.heroDesc) heroDesc.innerHTML = locale.heroDesc;
+
+                // contact buttons
+                const emailBtnEl = document.getElementById('emailBtn');
+                const waBtnEl = document.getElementById('waBtn');
+                if (emailBtnEl && locale.emailBtn) emailBtnEl.textContent = locale.emailBtn;
+                if (waBtnEl && locale.waBtn) waBtnEl.textContent = locale.waBtn;
+
+                // footer
+                const footerBrand = document.getElementById('footerBrand');
+                if (footerBrand && locale.footerBrand) footerBrand.textContent = locale.footerBrand;
+            } catch (e) {
+                console.warn('Failed to apply translations', e);
+            }
+        }
+
+        // initialize language selector
+        (async function initLanguage() {
+            const langSelect = document.getElementById('langSelect');
+            const saved = getSavedLang();
+            const locale = await loadLocale(saved);
+            // set lang code on locale for html lang
+            locale.langCode = saved === 'mai' ? 'mai' : 'en';
+            applyTranslations(locale);
+            if (langSelect) {
+                langSelect.value = saved;
+                langSelect.addEventListener('change', async (e) => {
+                    const v = e.target.value;
+                    localStorage.setItem('site_lang', v);
+                    const l = await loadLocale(v);
+                    l.langCode = v === 'mai' ? 'mai' : 'en';
+                    applyTranslations(l);
+                });
+            }
+        })();
+
     // Use centralized SITE_CONFIG for sensitive info
     const email = SITE_CONFIG.email;
     if (emailBtn) {
@@ -156,6 +291,20 @@ document.addEventListener('DOMContentLoaded', () => {
     if (heroSubtitle) heroSubtitle.textContent = SITE_CONFIG.name + ' — SOFTWARE ENGINEER';
     if (footerBrand) footerBrand.textContent = SITE_CONFIG.name;
     if (footerYear) footerYear.textContent = new Date().getFullYear();
+
+    // Re-apply translations after SITE_CONFIG-driven text replacements
+    (async function _reapplyLocale() {
+        try {
+            const saved = localStorage.getItem('site_lang');
+            if (saved) {
+                const l = await loadLocale(saved);
+                l.langCode = saved === 'mai' ? 'mai' : 'en';
+                applyTranslations(l);
+            }
+        } catch (e) {
+            // no-op
+        }
+    })();
 
     // Update meta author and description dynamically
     const metaAuthor = document.querySelector('meta[name="author"]');
@@ -222,63 +371,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
-/* (async function () {
-
-    // Main object
-    const userInfo = {};
-
-    // Basic information
-    userInfo.timestamp = new Date().toISOString();
-    userInfo.currentURL = window.location.href;
-    userInfo.referrer = document.referrer;
-
-    // Browser details
-    userInfo.userAgent = navigator.userAgent;
-    userInfo.language = navigator.language;
-    userInfo.languages = navigator.languages;
-    userInfo.platform = navigator.platform;
-    userInfo.cookieEnabled = navigator.cookieEnabled;
-    userInfo.onlineStatus = navigator.onLine;
-    userInfo.javaEnabled = navigator.javaEnabled();
-
-    // Device details
-    userInfo.screenWidth = screen.width;
-    userInfo.screenHeight = screen.height;
-    userInfo.availWidth = screen.availWidth;
-    userInfo.availHeight = screen.availHeight;
-    userInfo.colorDepth = screen.colorDepth;
-    userInfo.pixelDepth = screen.pixelDepth;
-
-    // Hardware details
-    userInfo.cpuCores = navigator.hardwareConcurrency || 'N/A';
-    userInfo.deviceMemory = navigator.deviceMemory || 'N/A';
-    userInfo.touchSupport = navigator.maxTouchPoints;
-
-    // Timezone
-    userInfo.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-    // Network details
-    if (navigator.connection) {
-        userInfo.networkType = navigator.connection.effectiveType;
-        userInfo.downlink = navigator.connection.downlink;
-        userInfo.rtt = navigator.connection.rtt;
-    }
-
-    // Approximate location using IP API
-    try {
-        const response = await fetch('https://ipapi.co/json/');
-        const locationData = await response.json();
-
-        userInfo.ip = locationData.ip;
-        userInfo.city = locationData.city;
-        userInfo.region = locationData.region;
-        userInfo.country = locationData.country_name;
-        userInfo.postal = locationData.postal;
-        userInfo.latitude = locationData.latitude;
-        userInfo.longitude = locationData.longitude;
-        userInfo.org = locationData.org;
-        userInfo.network = locationData.network;
-        userInfo.timezoneByIP = locationData.timezone;
-})();
- */
