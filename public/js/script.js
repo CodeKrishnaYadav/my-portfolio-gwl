@@ -398,14 +398,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.warn('Spam bot detected via honeypot.');
                 return;
             }
-            // Timing check: require at least 3 seconds before submit
-            const started = parseInt(formStart.value || '0', 10);
-            const elapsed = Date.now() - started;
-            if (isNaN(started) || elapsed < 3000) {
-                const timingMessage = 'Please take a moment to describe your project before sending.';
-                setFieldError('message', timingMessage);
-                return;
-            }
 
             let isValid = true;
             ['name', 'email', 'message'].forEach(fieldId => {
@@ -416,6 +408,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (!isValid) {
+                return;
+            }
+
+            // Timing check: require at least 3 seconds before submit
+            const started = parseInt(formStart.value || '0', 10);
+            const elapsed = Date.now() - started;
+            if (isNaN(started) || elapsed < 3000) {
+                alert('Please take a moment to describe your project before sending.');
                 return;
             }
 
