@@ -236,8 +236,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // contact buttons
                 const emailBtnEl = document.getElementById('emailBtn');
                 const waBtnEl = document.getElementById('waBtn');
-                if (emailBtnEl && locale.emailBtn) emailBtnEl.textContent = locale.emailBtn;
-                if (waBtnEl && locale.waBtn) waBtnEl.textContent = locale.waBtn;
+                if (emailBtnEl) emailBtnEl.textContent = '✉️ Email';
+                if (waBtnEl) waBtnEl.textContent = '💬 WhatsApp';
 
                 // footer
                 const footerBrand = document.getElementById('footerBrand');
@@ -272,12 +272,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (emailBtn) {
         emailBtn.setAttribute('href', 'mailto:' + email);
         emailBtn.textContent = '✉️ Email';
+        emailBtn.setAttribute('aria-label', 'Email');
     }
 
     if (waBtn) {
         const phoneDigits = SITE_CONFIG.phone.replace(/[^0-9]/g, '');
         waBtn.setAttribute('href', 'https://wa.me/' + phoneDigits);
         waBtn.textContent = '💬 WhatsApp';
+        waBtn.setAttribute('aria-label', 'WhatsApp');
     }
 
     if (formStart) formStart.value = Date.now().toString();
