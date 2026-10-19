@@ -340,6 +340,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (contactForm) {
+        const setFieldError = (fieldId, message) => {
+            const field = document.getElementById(fieldId);
+            const errorBox = document.querySelector('[data-error-for="' + fieldId + '"]');
+            if (!field || !errorBox) return;
+
+            field.setAttribute('aria-invalid', message ? 'true' : 'false');
+            field.style.borderColor = message ? 'rgba(255, 138, 138, 0.95)' : 'var(--border)';
+            errorBox.textContent = message || '';
+            errorBox.style.display = message ? 'block' : 'none';
+        };
+
+        const validateField = (fieldId, value) => {
+            const trimmed = value.trim();
+
+            if (fieldId === 'name') {
+                if (!trimmed) return 'Please enter your name.';
+                if (trimmed.length < 2) return 'Name must be at least 2 characters.';
+                return '';
+            }
+
+            if (fieldId === 'email') {
+                if (!trimmed) return 'Please enter your email address.';
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(trimmed)) return 'Please enter a valid email address.';
+                return '';
+            }
+
+            if (fieldId === 'message') {
+                if (!trimmed) return 'Please add a short project brief.';
+                if (trimmed.length < 10) return 'Project brief should be at least 10 characters long.';
+                return '';
+            }
+
+            return '';
+        };
+
+        ['name', 'email', 'message'].forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (!field) return;
+
+            field.addEventListener('input', () => {
+                const message = validateField(fieldId, field.value);
+                setFieldError(fieldId, message);
+            });
+
+            field.addEventListener('blur', () => {
+                const message = validateField(fieldId, field.value);
+                setFieldError(fieldId, message);
+            });
+        });
+
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             // Honeypot should be empty
@@ -351,23 +402,29 @@ document.addEventListener('DOMContentLoaded', () => {
             const started = parseInt(formStart.value || '0', 10);
             const elapsed = Date.now() - started;
             if (isNaN(started) || elapsed < 3000) {
-                alert('Please take a moment to describe your project before sending.');
+                const timingMessage = 'Please take a moment to describe your project before sending.';
+                setFieldError('message', timingMessage);
                 return;
             }
 
-            const name = document.getElementById('name')?.value?.trim() || '';
-            const emailField = document.getElementById('email')?.value?.trim() || '';
-            const message = document.getElementById('message')?.value?.trim() || '';
+            let isValid = true;
+            ['name', 'email', 'message'].forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                const errorMessage = validateField(fieldId, field?.value || '');
+                setFieldError(fieldId, errorMessage);
+                if (errorMessage) isValid = false;
+            });
 
-            if (!name || !emailField || !message) {
-                alert('Please fill name, email and a short project brief.');
+            if (!isValid) {
                 return;
             }
 
             // Build mailto link safely
+            const name = document.getElementById('name')?.value?.trim() || '';
+            const emailField = document.getElementById('email')?.value?.trim() || '';
+            const message = document.getElementById('message')?.value?.trim() || '';
             const subject = encodeURIComponent('New project from ' + name);
             const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + emailField + '\n\n' + message);
-            // Use configured recipient
             const mailto = 'mailto:' + SITE_CONFIG.email + '?subject=' + subject + '&body=' + body;
             window.location.href = mailto;
         });

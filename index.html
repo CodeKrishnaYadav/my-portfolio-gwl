@@ -346,15 +346,18 @@
                 <a id="emailBtn" href="mailto:krishnakumar98016@gmail.com" class="btn primary-btn">✉️ Email</a>
                 <a id="waBtn" href="https://wa.me/917033976249" class="btn secondary-btn">💬 WhatsApp</a>
             </div>
-            <form id="contactForm" method="post" style="margin-top:2rem;max-width:720px;margin-left:auto;margin-right:auto;text-align:left;">
+            <form id="contactForm" method="post" novalidate style="margin-top:2rem;max-width:720px;margin-left:auto;margin-right:auto;text-align:left;">
                 <input type="hidden" id="formStart" name="formStart" value="">
                 <input type="text" id="hp_field" name="hp_field" autocomplete="off" style="position:absolute;left:-9999px;top:auto;" aria-hidden="true">
                 <label for="name">Name</label>
-                <input id="name" name="Name" type="text" placeholder="Your name" required style="width:100%;padding:.6rem;border-radius:8px;margin:8px 0;border:1px solid var(--border);background:var(--card);color:var(--text)">
+                <input id="name" name="Name" type="text" placeholder="Your name" style="width:100%;padding:.6rem;border-radius:8px;margin:8px 0;border:1px solid var(--border);background:var(--card);color:var(--text)">
+                <div class="field-error" data-error-for="name" aria-live="polite" style="min-height:1.1rem;color:#ff8a8a;font-size:.82rem;margin-bottom:.5rem;display:none;"></div>
                 <label for="email">Email</label>
-                <input id="email" name="Email" type="email" placeholder="you@company.com" required style="width:100%;padding:.6rem;border-radius:8px;margin:8px 0;border:1px solid var(--border);background:var(--card);color:var(--text)">
+                <input id="email" name="Email" type="email" placeholder="you@company.com" style="width:100%;padding:.6rem;border-radius:8px;margin:8px 0;border:1px solid var(--border);background:var(--card);color:var(--text)">
+                <div class="field-error" data-error-for="email" aria-live="polite" style="min-height:1.1rem;color:#ff8a8a;font-size:.82rem;margin-bottom:.5rem;display:none;"></div>
                 <label for="message">Project brief</label>
-                <textarea id="message" name="Message" rows="5" placeholder="Describe your project, timeline and budget" required style="width:100%;padding:.6rem;border-radius:8px;margin:8px 0;border:1px solid var(--border);background:var(--card);color:var(--text)"></textarea>
+                <textarea id="message" name="Message" rows="5" placeholder="Describe your project, timeline and budget" style="width:100%;padding:.6rem;border-radius:8px;margin:8px 0;border:1px solid var(--border);background:var(--card);color:var(--text)"></textarea>
+                <div class="field-error" data-error-for="message" aria-live="polite" style="min-height:1.1rem;color:#ff8a8a;font-size:.82rem;margin-bottom:.5rem;display:none;"></div>
                 <div style="text-align:center;margin-top:1rem;"><button type="submit" class="btn primary-btn">Send Message</button></div>
             </form>
         </div>
