@@ -176,8 +176,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 contactLabel: 'संपर्क',
                 contactHeading: 'किछु बनाउ जे स्केल करय',
                 contactParagraph: 'हम फ्रीलांस प्रोजेक्ट, स्टार्टअप सहयोग आ रिमोट भूमिका खातिर उपलब्ध छी।',
-                emailBtn: 'ईमेल — ' + SITE_CONFIG.email,
-                waBtn: 'व्हाट्सऐप — ' + SITE_CONFIG.phone,
+                emailBtn: '✉️ Email',
+                waBtn: '💬 WhatsApp',
                 footerBrand: SITE_CONFIG.name
             };
             // default English fallback
@@ -199,8 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 contactLabel: 'CONTACT',
                 contactHeading: "Let's Build Something That Scales",
                 contactParagraph: 'I’m available for freelance projects, startup collaborations, and remote engineering roles. Share a brief of your project and I’ll respond within 24 hours.',
-                emailBtn: 'Email — ' + SITE_CONFIG.email,
-                waBtn: 'WhatsApp — ' + SITE_CONFIG.phone,
+                emailBtn: '✉️ Email',
+                waBtn: '💬 WhatsApp',
                 footerBrand: SITE_CONFIG.name
             };
         }
@@ -267,17 +267,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })();
 
-    // Use centralized SITE_CONFIG for sensitive info
+    // Use centralized SITE_CONFIG for sensitive info without exposing it in the UI
     const email = SITE_CONFIG.email;
     if (emailBtn) {
-        // obfuscation: construct at runtime
         emailBtn.setAttribute('href', 'mailto:' + email);
-        emailBtn.textContent = 'Email — ' + email;
+        emailBtn.textContent = '✉️ Email';
     }
 
     if (waBtn) {
         const phoneDigits = SITE_CONFIG.phone.replace(/[^0-9]/g, '');
         waBtn.setAttribute('href', 'https://wa.me/' + phoneDigits);
+        waBtn.textContent = '💬 WhatsApp';
     }
 
     if (formStart) formStart.value = Date.now().toString();
